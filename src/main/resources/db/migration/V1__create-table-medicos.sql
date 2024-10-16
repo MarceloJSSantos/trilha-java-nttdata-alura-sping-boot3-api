@@ -1,0 +1,15 @@
+CREATE TABLE medicos (
+   id BIGINT AUTO_INCREMENT NOT NULL,
+   nome VARCHAR(120) NOT NULL,
+   crm VARCHAR(7) NOT NULL,
+   email VARCHAR(100) NOT NULL,
+   especialidade VARCHAR(50) NOT NULL,
+   logradouro VARCHAR(120) NOT NULL,
+   bairro VARCHAR(100) NOT NULL,
+   cep VARCHAR(9) NOT NULL,
+   cidade VARCHAR(100) NOT NULL,
+   uf CHAR(2) NOT NULL,
+   numero VARCHAR(20) NULL,
+   complemento VARCHAR(100) NULL,
+   CONSTRAINT pk_medicos PRIMARY KEY (id)
+);
