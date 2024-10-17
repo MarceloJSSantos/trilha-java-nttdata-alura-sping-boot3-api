@@ -1,4 +1,4 @@
-package br.com.alura.med.voll.api.medico;
+package br.com.alura.med.voll.api.paciente;
 
 import br.com.alura.med.voll.api.endereco.Endereco;
 import jakarta.persistence.*;
@@ -7,32 +7,30 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "medicos")
-@Entity(name = "Medico")
 @Getter
+@EqualsAndHashCode(of = "id")
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
-public class Medico {
+@Entity(name = "Paciente")
+@Table(name = "pacientes")
+public class Paciente {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String crm;
     private String email;
+    private String cpf;
     private String telefone;
-
-    @Enumerated(EnumType.STRING)
-    private Especialidade especialidade;
 
     @Embedded
     private Endereco endereco;
 
-    public Medico(MedicoDadosCadastro dados) {
+    public Paciente(PacienteDadosCadastro dados) {
         this.nome = dados.nome();
-        this.crm = dados.crm();
         this.email = dados.email();
         this.telefone = dados.telefone();
-        this.especialidade = dados.especialidade();
+        this.cpf = dados.cpf();
         this.endereco = new Endereco(dados.endereco());
     }
+
 }

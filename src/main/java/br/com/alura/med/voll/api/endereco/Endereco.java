@@ -18,7 +18,7 @@ public class Endereco {
     private String numero;
     private String complemento;
 
-    public Endereco(EnderecoDadosCadastro endereco) {
+    public Endereco(EnderecoDados endereco) {
         this.logradouro = endereco.logradouro();
         this.bairro = endereco.bairro();
         this.cep = endereco.cep();
