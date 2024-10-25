@@ -1,6 +1,6 @@
-package br.com.alura.med.voll.api.paciente;
+package br.com.alura.med.voll.api.dominio.paciente;
 
-import br.com.alura.med.voll.api.endereco.Endereco;
+import br.com.alura.med.voll.api.dominio.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

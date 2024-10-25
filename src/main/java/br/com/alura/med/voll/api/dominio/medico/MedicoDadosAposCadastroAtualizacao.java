@@ -1,6 +1,6 @@
-package br.com.alura.med.voll.api.medico;
+package br.com.alura.med.voll.api.dominio.medico;
 
-import br.com.alura.med.voll.api.endereco.Endereco;
+import br.com.alura.med.voll.api.dominio.endereco.Endereco;
 
 public record MedicoDadosAposCadastroAtualizacao(
         Long id,
