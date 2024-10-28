@@ -38,7 +38,7 @@ public class PacienteController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity atualizar(@RequestBody @Valid PacienteDadosAtualizacao dados){
+    public ResponseEntity atualizar(@RequestBody @Valid PacienteDadosParaAtualizacao dados){
         var paciente = repository.getReferenceById(dados.id());
         paciente.atualizaDados(dados);
         return ResponseEntity.ok(new PacienteDadosAposCadastroAtualizacao(paciente));
