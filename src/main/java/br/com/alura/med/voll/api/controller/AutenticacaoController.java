@@ -3,7 +3,7 @@ package br.com.alura.med.voll.api.controller;
 import br.com.alura.med.voll.api.dominio.usuario.Usuario;
 import br.com.alura.med.voll.api.infra.seguranca.DadosTokenJWT;
 import br.com.alura.med.voll.api.infra.seguranca.TokenService;
-import br.com.alura.med.voll.api.usuario.DadosAutenticacao;
+import br.com.alura.med.voll.api.dominio.usuario.DadosAutenticacao;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,10 +26,16 @@ public class AutenticacaoController {
 
     @PostMapping
     public ResponseEntity efetuaLogin (@RequestBody @Valid DadosAutenticacao dados){
-        var tokenAutenticacao = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
-        var usuarioAutenticado =  manager.authenticate(tokenAutenticacao);
+        try{
+            var tokenAutenticacao = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
+            var usuarioAutenticado =  manager.authenticate(tokenAutenticacao);
 
-        var tokenJWT = tokenService.geraToken((Usuario) usuarioAutenticado.getPrincipal());
-        return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
+            var tokenJWT = tokenService.geraToken((Usuario) usuarioAutenticado.getPrincipal());
+            return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+
     }
 }

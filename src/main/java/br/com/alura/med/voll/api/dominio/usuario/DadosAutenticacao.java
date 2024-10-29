@@ -1,4 +1,4 @@
-package br.com.alura.med.voll.api.usuario;
+package br.com.alura.med.voll.api.dominio.usuario;
 
 import jakarta.persistence.Column;
 
