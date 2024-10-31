@@ -1,7 +1,6 @@
 package br.com.alura.med.voll.api.controller;
 
 import br.com.alura.med.voll.api.dominio.consulta.ConsultaDadosAgendamento;
-import br.com.alura.med.voll.api.dominio.consulta.ConsultaDadosDetalhamento;
 import br.com.alura.med.voll.api.dominio.consulta.ConsultaService;
 import br.com.alura.med.voll.api.dominio.consulta.DadosCancelamentoConsulta;
 import jakarta.validation.Valid;
@@ -20,8 +19,8 @@ public class ConsultaController {
     @PostMapping
     @Transactional
     public ResponseEntity agendaConsulta(@RequestBody @Valid ConsultaDadosAgendamento dados){
-        consulta.agendaConsulta(dados);
-        return ResponseEntity.ok(new ConsultaDadosDetalhamento(null, null, null, null));
+        var consultaAgendada = consulta.agendaConsulta(dados);
+        return ResponseEntity.ok(consultaAgendada);
     }
 
     @DeleteMapping

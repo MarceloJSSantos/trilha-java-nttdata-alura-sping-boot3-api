@@ -1,4 +1,4 @@
-package br.com.alura.med.voll.api.infra.excecao;
+package br.com.alura.med.voll.api.infra.exceptions;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -68,6 +68,13 @@ public class TratadorErros {
     public ResponseEntity tratarErro500(Exception ex) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro: " +
                 ex.getLocalizedMessage());
+    }
+
+    @ExceptionHandler(ValidacaoNegocioException.class)
+    public ResponseEntity trataErroRegraDeNegocio(ValidacaoNegocioException e){
+        /* TODO: Melhorar*/
+        var mensagem = e.getMessage();
+        return ResponseEntity.badRequest().body(mensagem);
     }
 
     private record DadosErroValidacao(String campo, String mensagem){
