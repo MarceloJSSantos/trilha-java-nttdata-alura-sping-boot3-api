@@ -42,3 +42,10 @@ Com o valor do token registrar em "Authorize"
 
 Nota: Criado o BD 'vollmed_api_test' para uso dos testes
 
+<h3>DEPLOY</h3>
+Rodar no servidor onde a aplicação ficará hospedada
+```shell
+java '-Dspring.profiles.active=prod' '-DDATASOURCE_PASSWORD=123456' '-DDATASOURCE_URL=jdbc:mysql://localhost/vollmed_api' '-DDATASOURCE_USER=root' '-DJWT_SECRET=123456' -jar .\api-0.0.1-SNAPSHOT.jar
+```
+
+
